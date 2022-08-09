@@ -3,8 +3,12 @@ require("dotenv").config();
 const express=require("express");
 const app=express();
 
-//Additional modules
 const connectDB=require("./Connectors/dbConnection");
+const router=require("./Routers/taskRouter");
+
+//Middlewares
+app.use(express.json());
+app.use("/api/V1/tasks",router);
 
 const start=async ()=>{
     try{
