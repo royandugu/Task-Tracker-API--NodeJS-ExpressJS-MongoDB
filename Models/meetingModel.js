@@ -8,6 +8,22 @@ const schema=new mongoose.Schema({
     MainType:{
         type:String,
         required:[true,"Main type cannot be left empty"]
+    },
+    SubType:{
+        type:String,
+        required:[true,"Sub type cannot be left empty"]
+    },
+    Date:{
+        type:Date,
+        required:[true,"Deadline must be provided"]
+    },
+    Time:{
+        type:String,
+        required:[true, "Time must be provided"]
+    },
+    Description:{
+        type:String,
+        required:[true,"Meeting description required"]
     }
     
 })

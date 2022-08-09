@@ -8,7 +8,14 @@ const schema=new mongoose.Schema({
     MainType:{
         type:String,
         required:[true,"Main type cannot be left empty"]
+    },
+    SubType:{
+        type:String,
+        required:[true,"Sub type cannot be left empty"]
+    },
+    Description:{
+        type:String,
+        required:[true, "Description cannot be left empty"]
     }
-    
 })
 module.exports=mongoose.model("Today-Task-Model",schema);
