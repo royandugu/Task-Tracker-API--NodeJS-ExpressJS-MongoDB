@@ -10,5 +10,6 @@ const filterTask=async (req,res,next)=>{
     else if(Links){
         //Filter links
     }
+    next();
 }
 module.exports=filterTask;
