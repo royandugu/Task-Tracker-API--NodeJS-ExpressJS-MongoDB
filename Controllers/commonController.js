@@ -1,43 +1,22 @@
-const {StatusCodes}=require("http-status-codes");
+const router=require("express").Router();
 
-const taskModel=require("../Models/taskModel");
-const BadRequestError=require("../Error_Handlers/badRequestError");
-
-/**
- *  Options
- * commonController as a class  
- */
-
-const commonController=(model)=>{
-    const getAllTask=async (req,res)=>{
-        const tasks=await taskModel.find({});
-        res.status(StatusCodes.OK).json({message:"Fetch succesfull",taskList:tasks});
+const commonController=(req,res,model)=>{
+    const getData=(req,res,model)=>{
+        console.log("Gets data");
     }
-    const getIndvTask=async (req,res)=>{
-        const {id}=req.params;
-        const indvTask=await taskModel.findOne({_id});
-        if(!indvTask) throw new BadRequestError("The data doesn't exist");
-        res.status(StatusCodes.OK).json({message:"Individaul Fetch succesfull",individualTask:indvTask});
+    const getIndvData=(req,res,model)=>{
+        console.log("Gets individual data");
     }
-    const createTask=async (req,res)=>{
-        const newData=await taskModel.create(req.body);
-        res.status(StatusCodes.CREATED).json({message:"Task created",newData:newData});
+    const postData=(req,res,model)=>{    
+        console.log("Posts data");
     }
-    const updateTask=async (req,res)=>{
-        const {id}=req.params;
-        const newData=await taskModel.findOneAndUpdate({_id:id},req.body,{new:true, runValidators:true});
-        if(!newData) throw new BadRequestError("The data doesn't exist to update");
-        res.status(StatusCodes.OK).json({message:"Update successfull",newData:newData});
+    const updateData=(req,res,model)=>{
+        console.log("updates data");
     }
-    const deleteTask=async (req,res)=>{
-        const {id}=req.params;
-        const deletedData=await taskModel.findOneAndDelete({_id:id});
-        if(!deletedData) throw new BadRequestError("The data doesn't exist to delete");
-        res.status(StatusCodes.OK).json({message:"Delete sucessfull",deletedData:deletedData});
+    const deleteData=(req,res,model)=>{
+        console.log("deletes data");
     }
-       
-    module.exports={getAllTask,getIndvTask,createTask,updateTask,deleteTask};
-
+    router.route("/").get(getData).post(postData);
+    router.route("/:id").get(getIndvData).patch(updateData).delete(deleteData);
 }
-
-module.exports={commonController};
+module.exports=commonController;
