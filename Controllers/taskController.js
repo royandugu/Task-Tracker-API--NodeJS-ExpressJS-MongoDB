@@ -1,6 +1,19 @@
 const taskModel=require("../Models/taskModel");
-const commonController=require("./commonController");
-const taskController=(req,res)=>{    
-    commonController(req,res,taskModel);
+const {getData,getIndvData,postData,updateData,deleteData}=require("./commonOperations");
+
+const getTasks=async (req,res)=>{
+
 }
-module.exports=taskController;
+const getIndvTask=async (req,res)=>{
+
+}
+const postTask=async (req,res)=>{
+
+}
+const updateTask=async (req,res)=>{
+
+}
+const deleteTask=async (req,res)=>{
+
+}
+module.exports={getTasks,getIndvTask,postTask,updateTask,deleteTask};

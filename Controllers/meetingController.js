@@ -1,6 +1,19 @@
 const meetingModel=require("../Models/meetingModel");
-const commonController=require("./commonController");
-const meetingController=(req,res)=>{
-    commonController(req,res,meetingModel);
+const {getData,getIndvData,postData,updateData,deleteData}=require("./commonOperations");
+
+const getMeetings=async (req,res)=>{
+
 }
-module.exports=meetingController;
+const getIndvMeeting=async (req,res)=>{
+
+}
+const postMeeting=async (req,res)=>{
+
+}
+const updateMeeting=async (req,res)=>{
+
+}
+const deleteMeeting=async (req,res)=>{
+
+}
+module.exports={getMeetings,getIndvMeeting,postMeeting,updateMeeting,deleteMeeting};
