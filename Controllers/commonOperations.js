@@ -1,3 +1,7 @@
+/**
+ * Tasks and meetings have similar functionalities so we use common operations
+ */
+
 const getData=(model)=>{
     console.log("Gets data");
 }
