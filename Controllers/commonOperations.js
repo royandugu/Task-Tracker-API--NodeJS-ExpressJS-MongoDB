@@ -1,20 +1,16 @@
-/**
- * Tasks and meetings have similar functionalities so we use common operations
- */
-
-const getData=(model)=>{
-    console.log("Gets data");
+const getAllData=async (model)=>{
+    return await model.find({});
 }
-const getIndvData=(model)=>{
-    console.log("Gets individual data");
+const getIndvData=async (model,id)=>{
+    return await model.findOne({_id:id});
 }
-const postData=(model)=>{    
-    console.log("Posts data");
+const postData=async (model,body)=>{    
+    return await model.create(body);
 }
-const updateData=(model)=>{
-    console.log("updates data");
+const updateData=async (model,id,body)=>{
+    return await model.findOneAndUpdate({_id:id},body,{new:true,runValidators:true});
 }
-const deleteData=(model)=>{
-    console.log("deletes data");
+const deleteData=async (model)=>{
+    return await model.findOneAndDelete({_id:id});
 }
-module.exports={getData,getIndvData,postData,updateData,deleteData};
+module.exports={getAllData,getIndvData,postData,updateData,deleteData};
