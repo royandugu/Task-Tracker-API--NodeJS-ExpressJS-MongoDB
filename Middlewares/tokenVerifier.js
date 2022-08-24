@@ -1,3 +1,4 @@
+//Rename this file to token verifier
 const jwt=require("jsonwebtoken");
 const AuthenticationError=require("../Error_Handlers/authenticationError");
 
