@@ -1,15 +1,19 @@
+/* 
+    Make filterTask middleware be called before getRequest. If filterTask the queries contain any of such,
+    then the filtering will happen else it will just pass through next and to the get function
+*/
+
 const filterTask=async (req,res,next)=>{
-    /** Filter logic */
     const {Important, Notes, Links}=req.query;
     if(Important){
-        //Filter important 
+
     }
     else if(Notes){
-        //Filter notes
+    
     }
     else if(Links){
-        //Filter links
+    
     }
-    next();
+    else next();
 }
 module.exports=filterTask;
