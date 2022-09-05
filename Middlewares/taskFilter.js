@@ -1,18 +1,21 @@
-/* 
-    Make filterTask middleware be called before getRequest. If filterTask the queries contain any of such,
-    then the filtering will happen else it will just pass through next and to the get function
-*/
+const {StatusCodes}=require("http-status-codes");
+
+const taskModel=require("../Models/taskModel");
 
 const filterTask=async (req,res,next)=>{
+    const result=await taskModel.find({});
     const {Important, Notes, Links}=req.query;
     if(Important){
-
+        const important=result.filter(index=>index.semMenu==="Important");
+        res.status(StatusCodes.OK).json({important:important});
     }
     else if(Notes){
-    
+        const notes=result.filter(index=>index.semMenu==="Note");
+        res.status(StatusCodes.OK).json({notes:notes});
     }
     else if(Links){
-    
+        const links=result.filter(index=>index.semMenu==="Link")
+        res.status(StatusCodes.OK).json({links:links});
     }
     else next();
 }
