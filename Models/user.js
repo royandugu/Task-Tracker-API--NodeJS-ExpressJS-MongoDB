@@ -1,9 +1,7 @@
+require("dotenv").config();
 const mongoose=require("mongoose");
+const jwt=require("jsonwebtoken");
 
-/** 
- * Hashing of password
- * Regular expressions for email
-*/
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
@@ -19,4 +17,8 @@ const userSchema=new mongoose.Schema({
         required:[true,"You cannot leave the password field empty"]
     }
 })
-module.exports=userSchema;
+userSchema.methods.signToken=(userName,email,password)=>{
+    return jwt.sign({userName,email,password},PROCESS.env.JWT_SECRET,{expiresIn:'2d'}); 
+}
+
+module.exports=mongoose.model("User-Model",userSchema);

@@ -5,13 +5,15 @@ const express=require("express");
 const app=express();
 
 const connectDB=require("./Connectors/dbConnection");
-const router=require("./Routes/mainRoute");
+const mainRouter=require("./Routes/mainRoute");
+const userRouter=require("./Routes/userRoute");
 const notFoundError=require("./Error_Handlers/notFoundError");
 const errorHandler=require("./Error_Handlers/errorHander");
 
 //Middlewares
 app.use(express.json());
-app.use("/api/v1",router);
+app.use("/api/V1",mainRouter);
+app.use("/api/V1/authorization",userRouter);
 app.use(notFoundError);
 app.use(errorHandler);
 
