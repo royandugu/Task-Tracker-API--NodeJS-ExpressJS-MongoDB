@@ -4,7 +4,10 @@ const meetingModel=require("../Models/meetingModel");
 const {getAllData,getIndvData,postData,updateData,deleteData}=require("./commonOperations");
 
 const getMeetings=async (req,res)=>{
-    const result=await getAllData(meetingModel);
+    const result=getAllData(meetingModel);
+    const {sort}=req.query;
+    //if(sort==="desc") //Descending sort
+    const finalResult=await result;
     res.status(StatusCodes.OK).json({meetings:result});
 }
 const getIndvMeeting=async (req,res)=>{

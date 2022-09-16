@@ -4,11 +4,11 @@ const {getTasks,getIndvTask,postTask,updateTask,deleteTask}=require("../Controll
 const {getMeetings,getIndvMeeting,postMeeting,updateMeeting,deleteMeeting}=require("../Controllers/meetingController");
 
 //Task routes
-router.route("/task").get(getTasks).post(postTask);
-router.route("/task/:id").get(getIndvTask).patch(updateTask).delete(deleteTask);
+router.route("/tasks").get(getTasks).post(postTask);
+router.route("/tasks/:id").get(getIndvTask).patch(updateTask).delete(deleteTask);
 
 //Meeting routes
-router.route("/meeting").get(getMeetings).post(postMeeting);
-router.route("/meeting/:id").get(getIndvMeeting).patch(updateMeeting).delete(deleteMeeting);
+router.route("/meetings").get(getMeetings).post(postMeeting);
+router.route("/meetings/:id").get(getIndvMeeting).patch(updateMeeting).delete(deleteMeeting);
 
 module.exports=router;

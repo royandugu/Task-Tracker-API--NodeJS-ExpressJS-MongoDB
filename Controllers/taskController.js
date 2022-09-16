@@ -4,7 +4,23 @@ const taskModel=require("../Models/taskModel");
 const {getAllData,getIndvData,postData,updateData,deleteData}=require("./commonOperations");
 
 const getTasks=async (req,res)=>{
+    const {task}=req.query;
     const result=await getAllData(taskModel);
+    if(task==="important"){
+        const important=result.filter(index=>index.semMenu==="Important");
+        res.status(StatusCodes.OK).json({tasks:important});
+        return;
+    }
+    else if(task==="link"){
+        const links=result.filter(index=>index.semMenu==="Link");
+        res.status(StatusCodes.OK).json({tasks:links});
+        return;
+    }
+    else if(task==="note"){
+        const notes=result.filter(index=>index.semMenu==="Note");
+        res.status(StatusCodes.OK).json({tasks:notes});
+        return;
+    }
     res.status(StatusCodes.OK).json({tasks:result});
 }
 const getIndvTask=async (req,res)=>{
