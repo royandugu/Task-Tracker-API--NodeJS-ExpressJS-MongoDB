@@ -6,7 +6,9 @@ const {getAllData,getIndvData,postData,updateData,deleteData}=require("./commonO
 const getMeetings=async (req,res)=>{
     const result=getAllData(meetingModel);
     const {sort}=req.query;
-    //if(sort==="desc") //Descending sort
+    if(sort==="desc"){
+        result.sort();
+    }
     const finalResult=await result;
     res.status(StatusCodes.OK).json({meetings:result});
 }
