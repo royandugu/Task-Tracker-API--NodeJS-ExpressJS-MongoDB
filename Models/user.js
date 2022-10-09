@@ -8,7 +8,6 @@ const userSchema=new mongoose.Schema({
     name:{
         type:String,
         trim:true,
-        required:[true,"You cannot leave the name field empty"]
     },
     email:{
         type:String,
@@ -17,6 +16,28 @@ const userSchema=new mongoose.Schema({
     password:{
         type:String,
         required:[true,"You cannot leave the password field empty"]
+    },
+    config:{
+        darkMode:{
+            type:Boolean,
+            default:false
+        }
+        /** Pictures, nicknames and so on */
+    },
+    connections:{
+        type:mongoose.Types.ObjectId,
+        value:[mongoose.Types.ObjectId],
+        ref:"User-Model"
+    },
+    tasks:{
+        type: mongoose.Types.ObjectId,
+        value:[mongoose.Types.ObjectId],
+        ref:"Today-Task-Model"
+    },
+    meetings:{
+        type: mongoose.Types.ObjectId,
+        value: [mongoose.Types.ObjectId],
+        ref:"Meeting-Model"
     }
 })
 userSchema.pre("save",async function(next){
