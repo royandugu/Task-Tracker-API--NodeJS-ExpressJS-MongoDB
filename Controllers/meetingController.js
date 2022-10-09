@@ -14,7 +14,7 @@ const getMeetings=async (req,res)=>{
 }
 const getIndvMeeting=async (req,res)=>{
     const {id:taskID}=req.params;
-    const result=await getIndvData(meetingModel,taskID);
+    const result=await getIndvData(meetingModel,{_id: taskID});
     res.status(StatusCodes.OK).json({selectedMeeting:result})
 }
 const postMeeting=async (req,res)=>{

@@ -20,12 +20,14 @@ const userSchema=new mongoose.Schema({
     }
 })
 userSchema.pre("save",async function(next){
-    console.log("Function entry");
     const salt=await bcrypt.genSalt(10);
     this.password=await bcrypt.hash(this.password,salt);
 })
 userSchema.methods.signToken=function (){
     return jwt.sign({id:this._id,userName:this.name},process.env.JWT_SECRET,{expiresIn:'2d'}); 
+}
+userSchema.methods.validatePassword=function(password){
+    return bcrypt.compare(password,this.password);
 }
 
 module.exports=mongoose.model("User-Model",userSchema);

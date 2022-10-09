@@ -1,8 +1,8 @@
 const getAllData=(model)=>{
     return model.find({});
 }
-const getIndvData=(model,id)=>{
-    return model.findOne({_id:id});
+const getIndvData=(model,params)=>{
+    return model.findOne(params);
 }
 const postData=(model,body)=>{    
     return model.create(body);
